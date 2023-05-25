@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package company;
+
+message Company {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message GetCompanyRequest {
+  string company_id = 1;
+}
+
+message GetCompanyResponse {
+  Company company = 1;
+}
+
+message SearchCompaniesRequest {
+  string query = 1;
+}
+
+message SearchCompaniesResponse {
+  repeated Company companies = 1;
+}
+
+message CreateCompanyRequest {
+  string company_id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message CreateCompanyResponse {
+  Company company = 1;
+}
+
+message UpdateCompanyRequest {
+  string company_id = 1;
+  string name = 2;
+  string description = 3;
+}
+
+message UpdateCompanyResponse {
+  Company company = 1;
+}
+
+message DeleteCompanyRequest {
+  string company_id = 1;
+}
+
+message DeleteCompanyResponse {
+  bool success = 1;
+}
+
+service CompanyService {
+  rpc GetCompany(GetCompanyRequest) returns (GetCompanyResponse);
+  rpc SearchCompanies(SearchCompaniesRequest) returns (SearchCompaniesResponse);
+  rpc CreateCompany(CreateCompanyRequest) returns (CreateCompanyResponse);
+  rpc UpdateCompany(UpdateCompanyRequest) returns (UpdateCompanyResponse);
+  rpc DeleteCompany(DeleteCompanyRequest) returns (DeleteCompanyResponse);
+}
